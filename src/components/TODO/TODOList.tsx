@@ -1,16 +1,4 @@
-import {
-  Center,
-  Flex,
-  ListItem,
-  OrderedList,
-  UnorderedList,
-  Text,
-  propNames,
-  Box,
-  Checkbox,
-  Heading,
-} from '@chakra-ui/react'
-import { CheckIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { Flex, Heading } from '@chakra-ui/react'
 import { Section } from '@/layouts'
 import TODOItem from './TODOItem'
 import { Todo } from './TODO'

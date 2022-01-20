@@ -1,15 +1,6 @@
-import { Section } from '@/layouts'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
-import {
-  Flex,
-  Checkbox,
-  Box,
-  Heading,
-  UnorderedList,
-  Text,
-} from '@chakra-ui/react'
+import { Flex, Checkbox, Box, Text } from '@chakra-ui/react'
 import { Todo } from './TODO'
-import { ItemProps } from './TODOList'
 
 type TODOItemProps = Todo
 
