@@ -1,5 +1,5 @@
 import { MainLayout } from '@/layouts'
-import { SEO } from '@/components'
+import { SEO, TODO } from '@/components'
 
 const Home = () => {
   return (
@@ -11,6 +11,7 @@ const Home = () => {
         image=""
         imageAlt=""
       />
+      <TODO />
     </MainLayout>
   )
 }
