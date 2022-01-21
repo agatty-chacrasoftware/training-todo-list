@@ -1,18 +1,18 @@
 import { Todo } from '@/components/TODO/TODO'
-import { StatHelpText } from '@chakra-ui/react'
 import { uuid } from 'uuidv4'
 import create from 'zustand'
 
 export interface TodoStore {
   todoListArray: Todo[]
-  setTodoListArray: (todoData: Todo) => void
+  addTodoItem: (todoData: Todo) => void
   removeTodoItem: (id: String) => void
+  markTodoComplete: (id: String) => void
 }
 
 const useTodoStore = create<TodoStore>((set) => ({
   todoListArray: [],
 
-  setTodoListArray: (todoData) => {
+  addTodoItem: (todoData) => {
     set((state) => ({
       todoListArray: [
         ...state.todoListArray,
@@ -29,6 +29,14 @@ const useTodoStore = create<TodoStore>((set) => ({
   removeTodoItem: (id: String) => {
     set((state) => ({
       todoListArray: state.todoListArray.filter((todo) => todo.id !== id),
+    }))
+  },
+
+  markTodoComplete: (id: String) => {
+    set((state) => ({
+      todoListArray: state.todoListArray.map((item) =>
+        item.id === id ? { ...item, isCompleted: !item.isCompleted } : item
+      ),
     }))
   },
 }))

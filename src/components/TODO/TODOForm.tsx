@@ -8,13 +8,14 @@ const TODOForm = () => {
     id: '',
     title: '',
     description: '',
+    isCompleted: false,
   })
 
-  const setTodoListArray = useTodoStore((state) => state.setTodoListArray)
+  const addTodoItem = useTodoStore((state) => state.addTodoItem)
 
   const handleClick = () => {
-    setTodoListArray(todoData)
-    setTodoData({ id: '', title: '', description: '' })
+    addTodoItem(todoData)
+    setTodoData({ id: '', title: '', description: '', isCompleted: false })
   }
 
   return (

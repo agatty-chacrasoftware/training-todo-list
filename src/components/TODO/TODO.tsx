@@ -9,6 +9,7 @@ export interface Todo {
   id: String
   title: string
   description: string
+  isCompleted: Boolean
 }
 
 const TODO = () => {
@@ -21,6 +22,7 @@ const TODO = () => {
           TODO List
         </Heading>
         <TODOForm />
+        {console.log(todoListArray)}
         <TODOList data={todoListArray} />
       </Flex>
     </Section>
