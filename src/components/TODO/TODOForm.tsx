@@ -1,10 +1,11 @@
-import useTodoStore from '@/store/useTODOStore'
+import useTodoStore from '@/store/useTodoStore'
 import { Button, Input, Stack, Textarea } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Todo } from './TODO'
 
 const TODOForm = () => {
   const [todoData, setTodoData] = useState<Todo>({
+    id: '',
     title: '',
     description: '',
   })
@@ -13,7 +14,7 @@ const TODOForm = () => {
 
   const handleClick = () => {
     setTodoListArray(todoData)
-    setTodoData({ title: '', description: '' })
+    setTodoData({ id: '', title: '', description: '' })
   }
 
   return (

@@ -1,10 +1,13 @@
+import useTodoStore from '@/store/useTodoStore'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
-import { Flex, Checkbox, Box, Text } from '@chakra-ui/react'
+import { Flex, Checkbox, Box, Text, IconButton } from '@chakra-ui/react'
 import { Todo } from './TODO'
 
 type TODOItemProps = Todo
 
 const TODOItem = (props: TODOItemProps) => {
+  const removeTodoItem = useTodoStore((state) => state.removeTodoItem)
+
   return (
     <Flex direction={'column'}>
       <Flex>
@@ -14,8 +17,13 @@ const TODOItem = (props: TODOItemProps) => {
           </Text>
         </Checkbox>
         <Box ml={10}>
-          <DeleteIcon color="red.500" mr="2" />
-          <EditIcon color="green" />
+          <IconButton
+            aria-label="Delete"
+            icon={<DeleteIcon />}
+            onClick={() => {
+              removeTodoItem(props.id)
+            }}
+          />
         </Box>
       </Flex>
       <Text fontFamily={'mono'}>{props.description}</Text>

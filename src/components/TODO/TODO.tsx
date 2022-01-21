@@ -1,11 +1,12 @@
 import { Section } from '@/layouts'
-import useTodoStore from '@/store/useTODOStore'
+import useTodoStore from '@/store/useTodoStore'
 import { Flex, Heading } from '@chakra-ui/react'
 import { useState } from 'react'
 import TODOForm from './TODOForm'
 import TODOList from './TODOList'
 
 export interface Todo {
+  id: String
   title: string
   description: string
 }
