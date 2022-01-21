@@ -1,4 +1,5 @@
 import { Section } from '@/layouts'
+import useTodoStore from '@/store/useTODOStore'
 import { Flex, Heading } from '@chakra-ui/react'
 import { useState } from 'react'
 import TODOForm from './TODOForm'
@@ -10,17 +11,14 @@ export interface Todo {
 }
 
 const TODO = () => {
-  const [todoListArray, setTodoListArray] = useState<Todo[]>([])
-
+  const { todoListArray } = useTodoStore()
   return (
     <Section>
       <Flex direction={'column'}>
         <Heading fontFamily={'mono'} color={'teal.700'}>
           TODO List
         </Heading>
-        <TODOForm
-          onAddTodo={(data) => setTodoListArray((prev) => [...prev, data])}
-        />
+        <TODOForm />
         <TODOList data={todoListArray} />
       </Flex>
     </Section>

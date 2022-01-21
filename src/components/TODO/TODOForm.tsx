@@ -1,16 +1,18 @@
+import useTodoStore from '@/store/useTODOStore'
 import { Button, Input, Stack, Textarea } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Todo } from './TODO'
 
-export interface TODOFormProps {
-  onAddTodo: ({ title, description }: Todo) => void
-}
+const TODOForm = () => {
+  const [todoData, setTodoData] = useState<Todo>({
+    title: '',
+    description: '',
+  })
 
-const TODOForm = (props: TODOFormProps) => {
-  const [todoData, setTodoData] = useState<Todo>({ title: '', description: '' })
+  const { setTodoListArray } = useTodoStore()
 
   const handleClick = () => {
-    props.onAddTodo(todoData)
+    setTodoListArray(todoData)
     setTodoData({ title: '', description: '' })
   }
 
