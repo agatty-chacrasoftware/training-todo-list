@@ -11,7 +11,8 @@ export interface Todo {
 }
 
 const TODO = () => {
-  const { todoListArray } = useTodoStore()
+  const todoListArray = useTodoStore((state) => state.todoListArray)
+
   return (
     <Section>
       <Flex direction={'column'}>

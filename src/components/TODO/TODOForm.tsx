@@ -9,7 +9,7 @@ const TODOForm = () => {
     description: '',
   })
 
-  const { setTodoListArray } = useTodoStore()
+  const setTodoListArray = useTodoStore((state) => state.setTodoListArray)
 
   const handleClick = () => {
     setTodoListArray(todoData)
