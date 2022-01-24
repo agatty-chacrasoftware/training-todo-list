@@ -1,5 +1,5 @@
 import useTodoStore from '@/store/useTodoStore'
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Checkbox, Box, Text, IconButton } from '@chakra-ui/react'
 import { Todo } from './TODO'
 
@@ -10,10 +10,11 @@ const TODOItem = (props: TODOItemProps) => {
   const markTodoComplete = useTodoStore((state) => state.markTodoComplete)
 
   return (
-    <Flex direction={'column'}>
-      <Flex>
+    <Flex direction={'column'} justify={'space-around'} pl={10}>
+      <Flex justify={'space-between'}>
         <Checkbox
           colorScheme={'green'}
+          size={'lg'}
           onChange={() => markTodoComplete(props.id)}
         >
           {props.isCompleted ? (
@@ -36,7 +37,9 @@ const TODOItem = (props: TODOItemProps) => {
           />
         </Box>
       </Flex>
-      <Text fontFamily={'mono'}>{props.description}</Text>
+      <Text fontFamily={'mono'} ml={10}>
+        {props.description}
+      </Text>
     </Flex>
   )
 }

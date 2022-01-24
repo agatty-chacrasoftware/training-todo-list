@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/react'
+import { Center, Flex, Heading } from '@chakra-ui/react'
 import { Section } from '@/layouts'
 import TODOItem from './TODOItem'
 import { Todo } from './TODO'
@@ -13,8 +13,12 @@ const TODOList = (props: ItemProps) => {
   ))
   return (
     <Section>
-      <Flex direction={'column'} mt={6}>
-        <Heading fontFamily={'mono'}>My Todos</Heading>
+      <Flex direction={'column'} justify={'space-around'} boxShadow={'inner'}>
+        <Center>
+          <Heading fontFamily={'cursive'} color={'red.500'} py={5}>
+            My Todos
+          </Heading>
+        </Center>
         {todoItems}
       </Flex>
     </Section>
