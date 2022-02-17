@@ -8,7 +8,7 @@ export type MainLayoutProps = BoxProps
 const MainLayout = forwardRef<MainLayoutProps, 'div'>(
   ({ children, ...props }, ref) => {
     return (
-      <Box as="main" ref={ref} h="full" w="full" {...props}>
+      <Box as="main" ref={ref} h="full" w="full" overflow="hidden" {...props}>
         <AnimatePresence exitBeforeEnter initial={false}>
           {children}
         </AnimatePresence>

@@ -26,13 +26,13 @@ const useTodoStore = create<TodoStore>((set) => ({
     }))
   },
 
-  removeTodoItem: (id: String) => {
+  removeTodoItem: (id: string) => {
     set((state) => ({
       todoListArray: state.todoListArray.filter((todo) => todo.id !== id),
     }))
   },
 
-  markTodoComplete: (id: String) => {
+  markTodoComplete: (id: string) => {
     set((state) => ({
       todoListArray: state.todoListArray.map((item) =>
         item.id === id ? { ...item, isCompleted: !item.isCompleted } : item

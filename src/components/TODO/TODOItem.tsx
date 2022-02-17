@@ -23,6 +23,7 @@ const TODOItem = (props: TODOItemProps) => {
       x: '-150%',
     },
   }
+
   return (
     <MotionFlex
       key={props.id}
