@@ -1,12 +1,12 @@
 import { Todo } from '@/components/TODO/TODO'
-import { uuid } from 'uuidv4'
 import create from 'zustand'
+import { uuid } from 'uuidv4'
 
 export interface TodoStore {
   todoListArray: Todo[]
-  addTodoItem: (todoData: Todo) => void
-  removeTodoItem: (id: String) => void
-  markTodoComplete: (id: String) => void
+  addTodoItem: (todoData: Omit<Todo, 'id' | 'isCompleted'>) => void
+  removeTodoItem: (id: string) => void
+  markTodoComplete: (id: string) => void
 }
 
 const useTodoStore = create<TodoStore>((set) => ({

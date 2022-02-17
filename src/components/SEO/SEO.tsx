@@ -9,7 +9,7 @@ interface SEOProps {
   type?: 'atricle' | 'website'
 }
 
-function SEO({ title, description, url, image, imageAlt, type }: SEOProps) {
+function SEO({ title }: SEOProps) {
   return (
     <Head>
       <title>{title}</title>

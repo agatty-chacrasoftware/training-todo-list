@@ -1,33 +1,39 @@
-import { Section } from '@/layouts'
-import useTodoStore from '@/store/useTodoStore'
-import { Center, Flex, Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
+import { MotionVStack } from '..'
 import React from 'react'
 import TODOForm from './TODOForm'
 import TODOList from './TODOList'
 
 export interface Todo {
-  id: String
+  id: string
   title: string
   description: string
-  isCompleted: Boolean
+  isCompleted: boolean
 }
 
 const TODO = () => {
-  const todoListArray = useTodoStore((state) => state.todoListArray)
-
   return (
-    <Section mt={5} boxShadow={'dark-lg'} borderRadius={'lg'}>
-      <Flex direction={'column'} justify={'space-around'}>
-        <Center>
-          <Heading fontFamily={'cursive'} color={'red.500'} py={5}>
-            TODO List
-          </Heading>
-        </Center>
-        <TODOForm />
-        {console.log(todoListArray)}
-        <TODOList data={todoListArray} />
-      </Flex>
-    </Section>
+    <MotionVStack
+      layout
+      bg="white"
+      shadow="md"
+      rounded="lg"
+      p={12}
+      m="auto"
+      minW="300px"
+      spacing={12}
+      overflow="hidden"
+    >
+      <Heading
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        bgClip="text"
+        textAlign="center"
+      >
+        Todo List
+      </Heading>
+      <TODOForm />
+      <TODOList />
+    </MotionVStack>
   )
 }
 

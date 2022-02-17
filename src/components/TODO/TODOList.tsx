@@ -1,27 +1,30 @@
-import { Center, Flex, Heading } from '@chakra-ui/react'
-import { Section } from '@/layouts'
+import { Heading, Text, VStack } from '@chakra-ui/react'
+
+import { AnimatePresence } from 'framer-motion'
 import TODOItem from './TODOItem'
-import { Todo } from './TODO'
+import useTodoStore from '@/store/useTodoStore'
 
-export interface ItemProps {
-  data: Todo[]
-}
+const TODOList = () => {
+  const todoListArray = useTodoStore((state) => state.todoListArray)
 
-const TODOList = (props: ItemProps) => {
-  const todoItems = props.data.map((item, index) => (
+  const todoItems = todoListArray.map((item, index) => (
     <TODOItem key={index} {...item} />
   ))
   return (
-    <Section>
-      <Flex direction={'column'} justify={'space-around'} boxShadow={'inner'}>
-        <Center>
-          <Heading fontFamily={'cursive'} color={'red.500'} py={5}>
-            My Todos
-          </Heading>
-        </Center>
-        {todoItems}
-      </Flex>
-    </Section>
+    <VStack w="full" align="stretch" spacing={8}>
+      <Heading
+        textAlign="center"
+        size="lg"
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        bgClip="text"
+      >
+        My Todo&apos;s
+      </Heading>
+      <AnimatePresence>{todoItems}</AnimatePresence>
+      {todoListArray.length === 0 && (
+        <Text textAlign="center">You don&apos;t have any todo</Text>
+      )}
+    </VStack>
   )
 }
 

@@ -1,23 +1,25 @@
 import '@/styles/index.css'
 
-import { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import { AppPropsWithLayout } from '@/typings/app'
+import { Chakra } from '@/components'
 import Head from 'next/head'
-import theme from '@/styles/theme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
+
   return (
     <>
       <Head>
+        <title>Ashwini Todo App</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1 viewport-fit=cover"
         />
-        {/* <meta name="viewport" content="viewport-fit=cover" /> */}
       </Head>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <Chakra cookies={pageProps.cookies}>
+        {getLayout(<Component {...pageProps} />)}
+      </Chakra>
     </>
   )
 }

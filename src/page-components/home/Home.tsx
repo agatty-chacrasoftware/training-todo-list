@@ -1,19 +1,19 @@
+import { Flex } from '@chakra-ui/react'
 import { MainLayout } from '@/layouts'
-import { SEO, TODO } from '@/components'
+import { NextPageWithLayout } from '@/typings/app'
+import { ReactElement } from 'react'
+import { TODO } from '@/components'
 
-const Home = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <MainLayout className="container" theme="dark">
-      <SEO
-        title="TODO"
-        description="TODO Description."
-        url="todochange.com"
-        image=""
-        imageAlt=""
-      />
+    <Flex h="full" w="full">
       <TODO />
-    </MainLayout>
+    </Flex>
   )
+}
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <MainLayout>{page}</MainLayout>
 }
 
 export default Home

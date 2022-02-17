@@ -1,6 +1,6 @@
 const fonts = {
-  heading: `Raleway`,
+  heading: `cursive`,
   body: `Raleway`,
-};
+}
 
-export default fonts;
+export default fonts

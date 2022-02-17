@@ -1,26 +1,18 @@
 import { Box, BoxProps, forwardRef } from '@chakra-ui/react'
 
+import { AnimatePresence } from 'framer-motion'
 import React from 'react'
-import { useMainLayoutStore } from '.'
 
-export interface MainLayoutProps extends BoxProps {}
+export type MainLayoutProps = BoxProps
 
 const MainLayout = forwardRef<MainLayoutProps, 'div'>(
   ({ children, ...props }, ref) => {
-    const backgroundColor = useMainLayoutStore((state) => state.backgroundColor)
     return (
-      <>
-        <Box
-          as="main"
-          ref={ref}
-          backgroundColor={backgroundColor}
-          transitionProperty="background-color"
-          transitionDuration="0.5s"
-          {...props}
-        >
+      <Box as="main" ref={ref} h="full" w="full" {...props}>
+        <AnimatePresence exitBeforeEnter initial={false}>
           {children}
-        </Box>
-      </>
+        </AnimatePresence>
+      </Box>
     )
   }
 )
